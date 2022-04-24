@@ -5,33 +5,34 @@ namespace App\Http\Controllers;
 use App\Contact;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class MainController extends Controller {
 
     public function home() {
         $profile = DB::table('profile')->get(); // подключение к БД
         return view('home', ['profile' => $profile->all()]); // В переменную 'profile' записываются все значения из таблицы и выводятся на главную страницу
-
-
-
-
-
-
-
-
-
-
-        //return view('home');
-//        $profile_title= DB::table('profile');
-//        $direction_code = DB::table('profile')->where('direction_code', 80200);
-//        dd($direction_code);
-//        dd(view('home', $direction_code)); //На страницу Home
-//        return view('home', ['$profile_title' => $profile_title->get()]);
-        //dd(view('home', ['contacts' => $contacts]));
     }
 
     public function about() {
         return view('about');
+    }
+
+    public function authorization(Request $request)
+    {
+        $credentials = $request->validate([
+            'user' => ['required']
+        ]);
+
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+
+            return redirect()->intended('dashboard');
+        }
+
+        return back()->withErrors([
+            'user' => 'Ошибка какая-то',
+        ]);
     }
 
     public function review() {
