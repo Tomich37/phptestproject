@@ -1,0 +1,58 @@
+#container {
+    display: flex;
+    padding: 2em;
+    justify-content: center;
+}
+
+.center_div {
+    width: 20px;
+}
+
+.div_p > p {
+    border: solid 2px;
+}
+
+.div_p > div {
+    border: solid 2px;
+}
+
+.btn {
+    background-color: transparent;
+    border: none;
+    border-radius: 8px;
+    color: black;
+    cursor: pointer;
+    transition-duration: 0.4s;
+}
+
+.btn:hover {
+    background-color: black; /* Green */
+    color: white;
+}
+
+#left {
+    min-width: 25em;
+    min-height: 2em;
+    color: #246e22;
+    border: solid;
+    padding: 1%;
+}
+
+#right {
+    min-width: 25em;
+    min-height: 2em;
+    color: #246e22;
+    border: solid;
+}
+
+#outer_element {
+    padding: 1em;
+}
+
+#inner_element {
+    margin-left: 3em;
+}
+
+.green_container {
+    background-color: #d7fcda;
+}
