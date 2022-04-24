@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use App\Contact;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use Validator;
 
 class MainController extends Controller {
 
@@ -21,8 +21,16 @@ class MainController extends Controller {
 
     public function authorization(Request $request)
     {
+        return view('authorization', ['request' => $request['request']]);
+    }
+
+    public function review() {
+        return view('review');
+    }
+
+    public function review_check(Request $request) {
         $is_valid_name = $request->validate([
-            'username' => 'required|min:4|max30',
+            'username' => 'required|min:4|max:30',
         ]);
 
         if ($is_valid_name) {
@@ -31,31 +39,27 @@ class MainController extends Controller {
                 ->where('username', $username)
                 ->exists();
 
-            if (!$user_exists) {
-                return view('home', ['request' => $username]);
+            if ($user_exists) {
+                return Redirect::action([MainController::class, 'home'], ['request' => $username]);
             }
             return Redirect::back()->withErrors(['username' => 'Current user exists']);
+
+
+//        $valid = $request->validate([
+//            'email' => 'required|min:4|max:100',
+//            'subject' => 'required|min:4|max:100',
+//            'message' => 'required|min:15|max:500'
+//        ]);
+//
+//        $review = new Contact();
+//        $review->email = $request->input('email');
+//        $review->subject = $request->input('subject');
+//        $review->message = $request->input('message');
+//
+//        $review->save();
+//
+//        return redirect()->route('/review');
         }
     }
 
-    public function review() {
-        return view('review');
-    }
-
-    public function review_check(Request $request) {
-        $valid = $request->validate([
-            'email' => 'required|min:4|max:100',
-            'subject' => 'required|min:4|max:100',
-            'message' => 'required|min:15|max:500'
-        ]);
-
-        $review = new Contact();
-        $review->email = $request->input('email');
-        $review->subject = $request->input('subject');
-        $review->message = $request->input('message');
-
-        $review->save();
-
-        return redirect()->route('/review');
-    }
 }

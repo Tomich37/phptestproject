@@ -16,9 +16,9 @@
         </div>
     @endif
 
-    <form action="/home" method="POST">
+    <form action="/review/check" method="POST">
         @csrf
-        <p>Идентификатор <input type="text" name="username" id="username" placeholder="Имя пользователя" class="form-control"></p>
+        <p>Имя пользователя <input type="text" name="username" id="username" placeholder="Имя пользователя" class="form-control"></p>
         <input type="submit" value="Войти" class="btn btn-success">
     </form>
 @endsection
