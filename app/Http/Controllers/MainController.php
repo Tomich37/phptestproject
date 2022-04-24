@@ -24,11 +24,7 @@ class MainController extends Controller {
         return view('authorization', ['request' => $request['request']]);
     }
 
-    public function review() {
-        return view('review');
-    }
-
-    public function review_check(Request $request) {
+    public function authorization_check(Request $request) {
         $is_valid_name = $request->validate([
             'username' => 'required|min:4|max:30',
         ]);
@@ -44,21 +40,6 @@ class MainController extends Controller {
             }
             return Redirect::back()->withErrors(['username' => 'Current user exists']);
 
-
-//        $valid = $request->validate([
-//            'email' => 'required|min:4|max:100',
-//            'subject' => 'required|min:4|max:100',
-//            'message' => 'required|min:15|max:500'
-//        ]);
-//
-//        $review = new Contact();
-//        $review->email = $request->input('email');
-//        $review->subject = $request->input('subject');
-//        $review->message = $request->input('message');
-//
-//        $review->save();
-//
-//        return redirect()->route('/review');
         }
     }
 

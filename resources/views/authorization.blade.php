@@ -16,7 +16,7 @@
         </div>
     @endif
 
-    <form action="/review/check" method="POST">
+    <form action="/authorization/check" method="POST">
         @csrf
         <p>Имя пользователя <input type="text" name="username" id="username" placeholder="Имя пользователя" class="form-control"></p>
         <input type="submit" value="Войти" class="btn btn-success">

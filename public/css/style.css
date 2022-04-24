@@ -23,6 +23,7 @@
     color: black;
     cursor: pointer;
     transition-duration: 0.4s;
+    font-size: 125%;
 }
 
 .btn:hover {

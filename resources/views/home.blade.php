@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('title')
-    Главная страница
+    Направления
 @endsection
 
 @section('main_content')
