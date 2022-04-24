@@ -6,6 +6,7 @@ use App\Contact;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
 class MainController extends Controller {
 
@@ -20,19 +21,21 @@ class MainController extends Controller {
 
     public function authorization(Request $request)
     {
-        $credentials = $request->validate([
-            'user' => ['required']
+        $is_valid_name = $request->validate([
+            'username' => 'required|min:4|max30',
         ]);
 
-        if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
+        if ($is_valid_name) {
+            $username = $request->input('username');
+            $user_exists = DB::table('users')
+                ->where('username', $username)
+                ->exists();
 
-            return redirect()->intended('dashboard');
+            if (!$user_exists) {
+                return view('home', ['request' => $username]);
+            }
+            return Redirect::back()->withErrors(['username' => 'Current user exists']);
         }
-
-        return back()->withErrors([
-            'user' => 'Ошибка какая-то',
-        ]);
     }
 
     public function review() {

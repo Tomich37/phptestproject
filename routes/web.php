@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 use App\Http\Controllers\MainController;
-//Route::get('/home', [MainController::class, 'home']);
+Route::get('/home', [MainController::class, 'home']);
 
 Route::get('/authorization', [MainController::class, 'authorization']);
 
@@ -22,9 +22,9 @@ Route::get('/about',[MainController::class, 'about']);
 Route::get('/review',[MainController::class, 'review']);
 Route::post('/review/check',[MainController::class, 'review_check']);
 
-Route::get('/home', function () {
-    // Только аутентифицированные пользователи могут получить доступ к этому маршруту ...
-})->middleware('auth.basic');
+//Route::get('/home', function () {
+//    // Только аутентифицированные пользователи могут получить доступ к этому маршруту ...
+//})->middleware('auth.basic');
 
 //Route::get('/user/{id}/{name}', function ($id, $name) {
 //    return 'ID: '. $id.'. Name: '.$name;
