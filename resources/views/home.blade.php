@@ -6,11 +6,21 @@
 
 @section('main_content')
 
-    <h4>Добавить предметы для пользователя " . $request . "</h4>";
-    <br>
-
+    <h4>Добавить предметы для пользователя</h4>
     <link rel="stylesheet" href="{{ asset("css/style.css") }}">
     <script src="/js/trashcan_tables.js">'let left;'</script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+    <script>
+        function ajaxClick() {
+            console.log('Test')
+            $.post('/ajax/form_receiver.php', {text: 'Текст'}, function(data){
+                alert(data);
+            });
+        }
+    </script>
+
+    <button onclick="ajaxClick()">Кнопка</button>
 
     <div id="container">
         <div id="left" class='green_container'></div>
