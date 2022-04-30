@@ -12,11 +12,11 @@ function get_element_html_code(element_name, element_content) {
     let direction = (
         '<div class="div_p">' +
         '<button class="sml_btn btn" onclick="check(this)">&#8644</button>' +
-        '<button class="sml_btn btn" onclick="up(this, \'{id}\')">&#9650</button>'.replace(
+        '<button class="sml_btn btn btn_invisible" onclick="up(this, \'{id}\')">&#9650</button>'.replace(
             '{id}',
             id,
         ) +
-        '<button class="sml_btn btn" onclick="down(this, \'{id}\')">&#9660</button>'.replace(
+        '<button class="sml_btn btn btn_invisible" onclick="down(this, \'{id}\')">&#9660</button>'.replace(
             '{id}',
             id,
         ) +

@@ -16,6 +16,8 @@
     border: solid 2px;
 }
 
+
+
 .btn {
     background-color: transparent;
     border: none;
@@ -26,24 +28,36 @@
     font-size: 125%;
 }
 
+#left > .btn_invisible {
+    display: none;
+}
+
 .btn:hover {
     background-color: black; /* Green */
     color: white;
 }
 
+
+
 #left {
-    min-width: 25em;
+    width: 75%;
+    min-width: 500px;
     min-height: 2em;
+    max-height: 1500px;
     color: #246e22;
     border: solid;
     padding: 1%;
 }
 
 #right {
-    min-width: 25em;
+    width: 75%;
+    min-width: 500px;
     min-height: 2em;
+    max-height: 1500px;
     color: #246e22;
     border: solid;
+    padding: 1%;
+
 }
 
 #outer_element {
